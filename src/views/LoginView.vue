@@ -1,36 +1,46 @@
 <template>
-
-<div class="bg-img">
+    <div class="bg-img">
         <div class="content">
             <header> Login</header>
             <form action="#">
-            <div class="field">
-                <span class="fa fa-user"></span>
-                <input type="text" required placeholder="Ingrese su Correo" />
-            </div>
-            <div class="field space">
-                <span class="fa fa-lock"></span>
-                <input type="password" class="pass-key" required placeholder="Ingrese su Contraseña" />
-                <span class="show"> Mostrar </span>
-            </div>
-            <div class="pass">
-                <a href="#">Olvidaste la contraseña?</a>
-            </div>
-            <div class="field">
-                <input type="submit" value="Login" />
-            </div>
+                <div class="field">
+                    <span class="fa fa-user"></span>
+                    <input type="text" required placeholder="Ingrese su Correo" />
+                </div>
+                <div class="field space">
+                    <span class="fa fa-lock"></span>
+                    <input class="pass-key" :type="passwordType" v-model="password" required placeholder="Contraseña">
+                    <span class="show" @click="togglePassword">{{ buttonText }}</span>
+                </div>
+                <div class="pass">
+                    <a href="#">Olvidaste la contraseña?</a>
+                </div>
+                <div class="field">
+                    <input type="submit" value="Login" />
+                </div>
             </form>
         </div>
     </div>
-
 </template>
 
+
 <script setup>
+import { ref, computed } from 'vue';
+
+const password = ref('');
+const showPassword = ref(false);
+
+const passwordType = computed(() => showPassword.value ? 'text' : 'password');
+const buttonText = computed(() => showPassword.value ? 'HIDE' : 'SHOW');
+
+const togglePassword = () => {
+    showPassword.value = !showPassword.value;
+};
+
 
 </script>
 
 <style scoped>
-
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap");
 
 
@@ -44,7 +54,7 @@
 
 
 
-.content{
+.content {
     border-radius: 10px;
     position: absolute;
     top: 50%;
@@ -62,7 +72,7 @@
 
 }
 
-.content header{
+.content header {
     color: white;
     font-size: 33px;
     font-weight: 600;
@@ -100,7 +110,7 @@
     margin-top: 16px;
 }
 
-.show{
+.show {
     position: absolute;
     right: 13px;
     font-size: 13px;
@@ -111,11 +121,11 @@
     font-family: "Montserrat", sans-serif;
 }
 
-.pass-key:valid ~ .show{
+.pass-key:valid~.show {
     display: block;
 }
 
-.pass{
+.pass {
     text-align: left;
     margin: 10px 0;
 
@@ -142,7 +152,7 @@
     cursor: pointer;
     font-family: "Montserrat", sans-serif;
     transition: .3s ease;
-    
+
 }
 
 .field input[type="submit"]:hover {
@@ -165,6 +175,4 @@ i span {
     font-size: 16px;
     font-family: "Poppins", sans-serif;
 }
-
-
 </style>
