@@ -2,7 +2,7 @@
 <div>
 <h1>Registro de Usuario</h1>
 <form>
-    <label for="nombre">Nombre: Probando Push 20</label>
+    <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required><br>
 
         <label for="correo">Correo electrónico:</label>
