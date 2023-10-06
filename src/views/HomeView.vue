@@ -1,5 +1,5 @@
 <template>
-<h1> Pagina Home de Canchas Claras</h1>
+<h1>Sitio Web Canchas Claras</h1>
 </template>
 
 <script>
